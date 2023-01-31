@@ -1,20 +1,28 @@
 <div class="row">
     <h1>Experiencia Laboral</h1>
-    <div class="col-lg-11">
-        <ul>
-            <li>
-                <h3>Encargada de Ventas y Marketing - </h3><h3> (years)</h3>
-            </li>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, in. Delectus, cum aliquam mollitia tempora numquam voluptas voluptatibus debitis cumque tenetur dolorem sint nesciunt nam voluptatum quibusdam? Provident, necessitatibus cum.
-            </p>
+    <div class="col-lg-2">
+        <button class="btn btn-info" type="button" routerLink="/nuevaexp" *ngIf="isLogged">Nueva Experiencia</button>
+    </div>
 
-            <li>
-                <h3>Trabajo 2 - </h3><h3> (years)</h3>
-            </li>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat molestias magni esse eligendi repellat adipisci nisi officia doloremque quas odio, enim officiis debitis possimus quasi. Explicabo quis commodi rerum!
-            </p>
-        </ul>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <table class="table">
+           <tbody>
+               <tr *ngFor="let Experiencia of expe">
+                    <td>
+                        <h4>{{Experiencia.nombreE}}</h4>
+                    </td>
+                    <td>{{Experiencia.descripcionE}}</td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-info" routerLink="/editexp/{{Experiencia.id}}">
+                            <i class="bi bi-person-fill-gear"></i>EDITAR</button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-danger" (click)="delete(Experiencia.id)">
+                            <i class="bi bi-person-fill-slash"></i>ELIMINAR</button>
+                   </td>
+               </tr>
+           </tbody>
+        </table>
     </div>
 </div>
